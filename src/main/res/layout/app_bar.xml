@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:autofit="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/app_menu"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:visibility="visible">
+
+    <LinearLayout
+        android:id="@+id/app_menu_content"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignWithParentIfMissing="false">
+
+        <RelativeLayout
+            android:background="@drawable/app_button"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/action_button"
+                android:src="@drawable/chat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@drawable/app_button"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/findajob_button"
+                android:src="@drawable/offeraccept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:clickable="true"
+                android:layout_centerInParent="true"/>
+            <RelativeLayout
+                android:id="@+id/badge_layout"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/badge_imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/img"/>
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/badge_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    autofit:minTextSize="2pt"
+                    android:textSize="4pt"
+                    android:text=""
+                    android:padding="2dp"
+                    android:gravity="center"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@drawable/app_button"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/jobcomplete_button"
+                android:src="@drawable/assign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_centerInParent="true"/>
+            <RelativeLayout
+                android:id="@+id/assign_badge_layout"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/assign_badge_imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/img"/>
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/assign_badge_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    autofit:minTextSize="2pt"
+                    android:textSize="4pt"
+                    android:text=""
+                    android:padding="2dp"
+                    android:gravity="center"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@drawable/app_button"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/jobsincomplete_button"
+                android:src="@drawable/reports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@drawable/app_button"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/workteam_button"
+                android:src="@drawable/members"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@drawable/app_button"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/userlocation_button"
+                android:src="@drawable/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@drawable/app_button"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/productivity_button"
+                android:src="@drawable/productivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
+

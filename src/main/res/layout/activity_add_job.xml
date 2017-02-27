@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginLeft="20dp"
+        android:ems="10"
+        android:id="@+id/job_title_text"
+
+        android:hint="Job title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/action_add_layout">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_1"
+            android:layout_marginLeft="20dp"
+            android:hint="Action name1"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_2"
+            android:layout_marginLeft="20dp"
+            android:hint="Action name2"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/add_action_button"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="ADD Action"
+        android:onClick="onAddActionButtonClick"/>
+</LinearLayout>

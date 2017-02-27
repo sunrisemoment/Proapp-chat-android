@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="sam.puma.proapp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        tools:node="remove"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/proapp"
+        android:label="@string/app_name"
+        android:theme="@style/ConversationsTheme"
+        tools:replace="android:label">
+        <service android:name="sam.puma.proapp.services.XmppConnectionService"/>
+
+        <receiver android:name="sam.puma.proapp.services.EventReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN"/>
+                <action android:name="android.media.RINGER_MODE_CHANGED"/>
+                <action android:name="ITEM_SELECTED_INTENT"/>
+                <action android:name="PRODUCTIVITY_SUMMARY_ITEM_SELECTED"/>
+                <action android:name="PRODUCTIVITY_DETAIL_ITEM_SELECTED"/>
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="sam.puma.proapp.ui.ConversationActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="sam.puma.proapp.ui.StartConversationActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_start_conversation"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.SENDTO"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:scheme="imto"/>
+                <data android:host="jabber"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="xmpp"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:scheme="xmpp"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="sam.puma.proapp.ui.SettingsActivity"
+            android:label="@string/title_activity_settings"/>
+        <activity
+            android:name="sam.puma.proapp.ui.ChooseContactActivity"
+            android:label="@string/title_activity_choose_contact"/>
+        <activity
+            android:name="sam.puma.proapp.ui.BlocklistActivity"
+            android:label="@string/title_activity_block_list"/>
+        <activity
+            android:name="sam.puma.proapp.ui.ChangePasswordActivity"
+            android:label="@string/change_password_on_server"/>
+        <activity
+            android:name="sam.puma.proapp.ui.ManageAccountActivity"
+            android:label="@string/title_activity_manage_accounts"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name="sam.puma.proapp.ui.EditAccountActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity
+            android:name="sam.puma.proapp.ui.ConferenceDetailsActivity"
+            android:label="@string/title_activity_conference_details"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="sam.puma.proapp.ui.ContactDetailsActivity"
+            android:label="@string/title_activity_contact_details"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="sam.puma.proapp.ui.PublishProfilePictureActivity"
+            android:label="@string/mgmt_account_publish_avatar"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="sam.puma.proapp.ui.VerifyOTRActivity"
+            android:label="@string/verify_otr"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="sam.puma.proapp.ui.ShareWithActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="*/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.service.chooser.chooser_target_service"
+                android:value=".services.ContactChooserTargetService" />
+        </activity>
+        <activity
+            android:name="sam.puma.proapp.ui.TrustKeysActivity"
+            android:label="@string/trust_omemo_fingerprints"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:name="de.duenndns.ssl.MemorizingActivity"
+            android:theme="@style/ConversationsTheme"
+            tools:replace="android:theme"/>
+        <activity
+            android:name="sam.puma.proapp.ui.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName="sam.puma.proapp.ui.SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="sam.puma.proapp.ui.SettingsActivity"/>
+        </activity>
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <service android:name="sam.puma.proapp.services.ExportLogsService"/>
+        <service android:name="sam.puma.proapp.services.ContactChooserTargetService"
+                 android:permission="android.permission.BIND_CHOOSER_TARGET_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.chooser.ChooserTargetService" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
